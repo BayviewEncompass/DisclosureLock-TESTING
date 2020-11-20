@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>6aed81af-86ae-4707-815f-0ca6bb3778e9</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>CLS.SharedCode</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)UIHelpers\EncompassMainUI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UIHelpers\FormChangedEventArgs .cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UIHelpers\FormOpenedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UIHelpers\FormOpenedHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UIHelpers\OpenWindowGetter.cs" />
+  </ItemGroup>
+</Project>

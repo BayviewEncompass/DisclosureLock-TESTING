@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisclosureLock", "DisclosureLock.csproj", "{4A466B09-FD64-4F64-9A44-F66B7C41A76F}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CLS.SharedCode", "CLS.SharedCode\CLS.SharedCode.shproj", "{6AED81AF-86AE-4707-815F-0CA6BB3778E9}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		CLS.SharedCode\CLS.SharedCode.projitems*{4a466b09-fd64-4f64-9a44-f66b7c41a76f}*SharedItemsImports = 4
+		CLS.SharedCode\CLS.SharedCode.projitems*{6aed81af-86ae-4707-815f-0ca6bb3778e9}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A466B09-FD64-4F64-9A44-F66B7C41A76F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A466B09-FD64-4F64-9A44-F66B7C41A76F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A466B09-FD64-4F64-9A44-F66B7C41A76F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A466B09-FD64-4F64-9A44-F66B7C41A76F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC0934D4-6ABB-4495-8668-AF3CD4118654}
+	EndGlobalSection
+EndGlobal
