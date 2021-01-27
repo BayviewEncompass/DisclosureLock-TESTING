@@ -73,6 +73,8 @@ namespace CLS.DisclosureLock
                                 e.OpenedForm.Shown -= On_DisclosureDialogShown;
                                 e.OpenedForm.Shown += On_DisclosureDialogShown;
                                 break;
+
+
                         }
                     }
                 }
