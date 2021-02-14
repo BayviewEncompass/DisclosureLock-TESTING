@@ -1,33 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Linq;
-using System.Xml.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.ComponentModel;
-//
-using System.ServiceModel;
-using System.Runtime.Serialization;
-using System.Xml.Serialization;
-//
-using EllieMae.Encompass.ComponentModel;
-using EllieMae.Encompass.Automation;
-using EllieMae.Encompass.BusinessObjects;
+﻿using EllieMae.Encompass.Automation;
 using EllieMae.Encompass.BusinessObjects.Users;
-using EllieMae.Encompass.BusinessObjects.Loans;
 using EllieMae.Encompass.Client;
-//
-using WINFORM = System.Windows.Forms;
-using EMFORM = EllieMae.Encompass.Forms;
-//
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-//using NLog;
-//
-using CLS.SharedCode.UIHelpers;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
 using System.Windows.Forms;
+using EMFORM = EllieMae.Encompass.Forms;
+using WINFORM = System.Windows.Forms;
 
 namespace CLS.DisclosureLock
 {
@@ -204,8 +183,11 @@ namespace CLS.DisclosureLock
                 var tpoDate = (DateTime)EncompassApplication.CurrentLoan.Fields["TPO.X90"].Value;
                 var leDate = (DateTime)EncompassApplication.CurrentLoan.Fields["3152"].Value;
                 var reDisc = (String)EncompassApplication.CurrentLoan.Fields["CX.REDISC.ALERT"].Value;
-                int subDate = (todDate - tpoDate).Days;
-                int sentDate = (todDate - leDate).Days;
+                var BizCalendar = EncompassApplication.Session.SystemSettings.GetBusinessCalendar(EllieMae.Encompass.Configuration.BusinessCalendarType.Company);
+                var subDate = BizCalendar.AddBusinessDays(tpoDate, 3, false);
+                var sentDate = BizCalendar.AddBusinessDays(leDate, 2, false);
+                int subDiff = (todDate - subDate).Days;
+                int sentDiff = (todDate - sentDate).Days;
 
                 List<string> borName = new List<string>();
                 List<string> cbName = new List<string>();
@@ -218,33 +200,38 @@ namespace CLS.DisclosureLock
 
                 for (int i = 0; i < borName.Count; i++)
                 {
-                    if (oBorrowerPairsCBO.SelectedItem.ToString().Contains(borName[i].ToString()) & subDate > 3 & sentDate > 2)
-                    {
-                        oProcessButton.Enabled = false;
-                        break;
-                    }
-                    else
+                    if (borName[i] != "" & !oBorrowerPairsCBO.SelectedItem.ToString().Contains(borName[i].ToString()))
                     {
                         oProcessButton.Enabled = true;
+                        
                     }
-                    if (oBorrowerPairsCBO.SelectedItem.ToString().Contains(cbName[i].ToString()) & subDate > 3 & sentDate > 2)
-                    {
-                        oProcessButton.Enabled = false;
-                        break;
-                    }
-                    else
-                    {
-                        oProcessButton.Enabled = true;
-                    }
-                    if (reDisc == "Y")
 
+                    else if (borName[i] != "" & !oBorrowerPairsCBO.SelectedItem.ToString().Contains(cbName[i].ToString()))
                     {
-                        oProcessButton.Enabled = false;
-                        break;
+                        oProcessButton.Enabled = true;
+                        
+                    }
+                    
+
+                    else if (borName[i] != "" & oBorrowerPairsCBO.SelectedItem.ToString().Contains(borName[i].ToString()) & subDiff < 1 & sentDiff < 1)
+                    {
+                        oProcessButton.Enabled = true;
+
+                    }
+
+                    else if (cbName[i] != "" & oBorrowerPairsCBO.SelectedItem.ToString().Contains(cbName[i].ToString()) & subDiff < 1 & sentDiff < 1)
+                    {
+                        oProcessButton.Enabled = true;
+
                     }
                     else
                     {
-                        oProcessButton.Enabled = true;
+                        oProcessButton.Enabled = false;
+                    }
+
+                    if (reDisc == "Y")
+                    {
+                        oProcessButton.Enabled = false;
                     }
                 }
 
@@ -287,8 +274,12 @@ namespace CLS.DisclosureLock
                 var tpoDate = (DateTime)EncompassApplication.CurrentLoan.Fields["TPO.X90"].Value;
                 var leDate = (DateTime)EncompassApplication.CurrentLoan.Fields["3152"].Value;
                 var reDisc = (String)EncompassApplication.CurrentLoan.Fields["CX.REDISC.ALERT"].Value;
-                int subDate = (todDate - tpoDate).Days;
-                int sentDate = (todDate - leDate).Days;
+                var BizCalendar = EncompassApplication.Session.SystemSettings.GetBusinessCalendar(EllieMae.Encompass.Configuration.BusinessCalendarType.Company);
+                var subDate = BizCalendar.AddBusinessDays(tpoDate, 3, false);
+                var sentDate = BizCalendar.AddBusinessDays(leDate, 2, false);
+                var subDiff = (todDate - subDate).Days;
+                var sentDiff = (todDate - sentDate).Days;
+
 
                 List<string> borName = new List<string>();
                 List<string> cbName = new List<string>();
@@ -301,35 +292,40 @@ namespace CLS.DisclosureLock
 
                 for (int i = 0; i < borName.Count; i++)
                 {
-                    if (oBorrowerPairsCBO.SelectedItem.ToString().Contains(borName[i].ToString()) & subDate > 3 & sentDate > 2)
+                    if (borName[i] != "" & !oBorrowerPairsCBO.SelectedItem.ToString().Contains(borName[i].ToString()))
                     {
-                        oProcessButton.Enabled = false;
-                        break;
+                        oProcessButton.Enabled = true;
+
+                    }
+
+                    else if (borName[i] != "" & !oBorrowerPairsCBO.SelectedItem.ToString().Contains(cbName[i].ToString()))
+                    {
+                        oProcessButton.Enabled = true;
+
+                    }
+
+
+                    else if (borName[i] != "" & oBorrowerPairsCBO.SelectedItem.ToString().Contains(borName[i].ToString()) & subDiff < 1 & sentDiff < 1)
+                    {
+                        oProcessButton.Enabled = true;
+
+                    }
+
+                    else if (cbName[i] != "" & oBorrowerPairsCBO.SelectedItem.ToString().Contains(cbName[i].ToString()) & subDiff < 1 & sentDiff < 1)
+                    {
+                        oProcessButton.Enabled = true;
+
                     }
                     else
                     {
-                        oProcessButton.Enabled = true;
-                    }
-                    if (oBorrowerPairsCBO.SelectedItem.ToString().Contains(cbName[i].ToString()) & subDate > 3 & sentDate > 2)
-                    {
                         oProcessButton.Enabled = false;
-                        break;
-                    }
-                    else
-                    {
-                        oProcessButton.Enabled = true;
                     }
                     if (reDisc == "Y")
-
                     {
                         oProcessButton.Enabled = false;
-                        break;
                     }
-                    else
-                    {
-                        oProcessButton.Enabled = true;
-                    }
-                    
+ 
+
                 }
             }
         }

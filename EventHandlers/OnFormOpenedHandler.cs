@@ -53,15 +53,16 @@ namespace CLS.DisclosureLock
                     if (e.OpenedForm?.IsDisposed == false)
                     {
                         m_ActiveForm = e.OpenedForm;
+                        var contPanel = e.OpenedForm.Controls.Find("gradientPanel2", true);
 
                         switch (e.OpenedForm.Name.ToLower())
                         {
-                            
+
                             case "efolderdialog":
                                 var oButtonsToDisable = new string[] { "btnDisclosures" };
 
                                 foreach (var oButtonID in oButtonsToDisable)
-                                { 
+                                {
                                     if (e.OpenedForm.Controls?.Find(oButtonID, true).Length > 0)
                                     {
                                         Button oButton = (Button)e.OpenedForm.Controls.Find(oButtonID, true)[0];
@@ -73,8 +74,6 @@ namespace CLS.DisclosureLock
                                 e.OpenedForm.Shown -= On_DisclosureDialogShown;
                                 e.OpenedForm.Shown += On_DisclosureDialogShown;
                                 break;
-
-
                         }
                     }
                 }
