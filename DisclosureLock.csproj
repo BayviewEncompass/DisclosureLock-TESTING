@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CLS.DisclosureLock</RootNamespace>
-    <AssemblyName>CLS.DisclosureLock_v101</AssemblyName>
+    <AssemblyName>CLS.DisclosureLock_v2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>false</Deterministic>
@@ -34,15 +34,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EncompassAutomation">
-      <HintPath>..\..\..\..\..\SmartClientCache\Apps\UAC\Ellie Mae\1ZWX9OSIET83w+yYNgRiRfTDNe8=\Encompass360\EncompassAutomation.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\SmartClientCache\Apps\Ellie Mae\Encompass\SDK\EncompassAutomation.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="EncompassObjects">
-      <HintPath>..\..\..\..\..\SmartClientCache\Apps\UAC\Ellie Mae\1ZWX9OSIET83w+yYNgRiRfTDNe8=\Encompass360\EncompassObjects.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\SmartClientCache\Apps\Ellie Mae\Encompass\SDK\EncompassObjects.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="MainUI">
-      <HintPath>..\..\..\..\..\SmartClientCache\Apps\UAC\Ellie Mae\1ZWX9OSIET83w+yYNgRiRfTDNe8=\Encompass360\MainUI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\SmartClientCache\Apps\UAC\Ellie Mae\1ZWX9OSIET83w+yYNgRiRfTDNe8=\Encompass360\MainUI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
