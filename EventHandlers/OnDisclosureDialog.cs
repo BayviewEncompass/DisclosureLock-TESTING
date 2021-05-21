@@ -71,7 +71,8 @@ namespace CLS.DisclosureLock
 
                 for (int i = 0; i < borName.Count; i++)
                 {
-                    if (oBorrowerPairsCBO.SelectedItem.ToString().Contains(borName[i].ToString()))
+
+                    if (oBorrowerPairsCBO.SelectedItem.ToString().Contains(borName[i].ToString()) & disSent[i].DisclosureType.ToString() != "None")
                     {
                         oProcessButton.Enabled = false;
                         MessageBox.Show("Disclosures were already sent for this borrower pair.  Please choose another pair that has not received disclosures yet.");
@@ -83,7 +84,7 @@ namespace CLS.DisclosureLock
                     }
                     if (cbName[i].ToString() != "")
                     {
-                        if (oBorrowerPairsCBO.SelectedItem.ToString().Contains(cbName[i].ToString()))
+                        if (oBorrowerPairsCBO.SelectedItem.ToString().Contains(cbName[i].ToString()) & disSent[i].DisclosureType.ToString() != "None")
                         {
                             oProcessButton.Enabled = false;
                             MessageBox.Show("Disclosures were already sent for this borrower pair.  Please choose another pair that has not received disclosures yet.");
@@ -143,7 +144,7 @@ namespace CLS.DisclosureLock
 
                 for (int i = 0; i < borName.Count; i++)
                 {
-                    if (oBorrowerPairsCBO.SelectedItem.ToString().Contains(borName[i].ToString()))
+                    if (oBorrowerPairsCBO.SelectedItem.ToString().Contains(borName[i].ToString()) & disSent[i].DisclosureType.ToString() != "None")
                     {
                         oProcessButton.Enabled = false;
                         MessageBox.Show("Disclosures were already sent for this borrower pair.  Please choose another pair that has not received disclosures yet.");
@@ -155,7 +156,7 @@ namespace CLS.DisclosureLock
                     }
                     if (cbName[i].ToString() != "")
                     {
-                        if (oBorrowerPairsCBO.SelectedItem.ToString().Contains(cbName[i].ToString()))
+                        if (oBorrowerPairsCBO.SelectedItem.ToString().Contains(cbName[i].ToString()) & disSent[i].DisclosureType.ToString() != "None")
                         {
                             oProcessButton.Enabled = false;
                             MessageBox.Show("Disclosures were already sent for this borrower pair.  Please choose another pair that has not received disclosures yet.");
